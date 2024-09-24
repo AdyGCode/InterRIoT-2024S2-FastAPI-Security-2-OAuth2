@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block page_title %}
+<h2 class="mx-4 text-3xl text-zinc-700 text-left font-medium uppercase title-font">
+    <i class="fa-solid fa-home text-zinc-500"></i>
+    Home Page
+</h2>
+{% endblock %}
+
+{% block main %}
+<section class="container mx-auto border grow h-full shadow-md p-4 pb-8 rounded space-y-2">
+    <h2 class="text-xl text-zinc-50 bg-zinc-600 p-4 pb-6 mb-6 -mx-4 -mt-4 rounded-t">
+        Section Heading
+    </h2>
+
+    <p>MAIN CONTENT</p>
+
+    <ul class="list-disc list-inside">
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+    </ul>
+
+
+</section>
+{% endblock %}

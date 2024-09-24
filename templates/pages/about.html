@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock title %}
+
+{% block page_title %}
+<h2 class="mx-4 text-3xl text-zinc-700 text-left font-medium uppercase title-font">
+    <i class="fa-solid fa-info-circle text-zinc-500"></i>
+    About the App
+</h2>
+{% endblock %}
+
+{% block main %}
+<section class="container mx-auto border grow h-full shadow-md p-4 pb-8 rounded space-y-2">
+    <h2 class="text-xl text-zinc-50 bg-zinc-600 p-4 pb-6 mb-6 -mx-4 -mt-4 rounded-t">
+        The Team
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <section class="border border-2 p-2 text-zinc-500 space-y-2">
+            <header class="-mt-2 -mx-2 mb-4 flex space-x-2 bg-zinc-500 text-zinc-100  items-center">
+                <h4 class="p-2 py-3 text-xl font-medium w-2/3">
+                    YOUR NAME
+                </h4>
+                <p class="px-2 text-sm text-right grow">
+                    Lead Developer
+                </p>
+            </header>
+
+            <p>More details here</p>
+
+        </section>
+
+        <section class="border border-2 p-2 text-zinc-500 space-y-2">
+            <header class="-mt-2 -mx-2 mb-4 flex space-x-2 bg-zinc-500 text-zinc-100  items-center">
+                <h4 class="p-2 py-3 text-xl font-medium w-2/3">
+                    LECTURER'S NAME
+                </h4>
+                <p class="px-2 text-sm text-right grow">
+                    Development Supervisor
+                </p>
+            </header>
+
+            <p>More details here</p>
+
+        </section>
+
+        <section class="border border-2 p-2 text-zinc-500 space-y-2">
+            <header class="-mt-2 -mx-2 mb-4 flex space-x-2 bg-zinc-500 text-zinc-100  items-center">
+                <h4 class="p-2 py-3 text-xl font-medium w-2/3">
+                    TEAM MEMBER NAME
+                </h4>
+                <p class="px-2 text-sm text-right grow">
+                    Developer
+                </p>
+            </header>
+
+            <p>More details here</p>
+
+        </section>
+
+    </div>
+</section>
+
+<section class="container mx-auto border grow h-full shadow-md p-4 pb-8 rounded space-y-2">
+    <h2 class="text-xl text-zinc-50 bg-zinc-600 p-4 pb-6 mb-6 -mx-4 -mt-4 rounded-t">
+        Technologies
+    </h2>
+
+    <div class="flex space-x-6 text-zinc-600">
+        <p>
+            <a href="#" class="hover:text-zinc-500 underline underline-offset-4">
+                <i class="fa-brands fa-python pr-1"></i>
+                Python
+            </a>
+        </p>
+        <p>
+            <a href="#" class="hover:text-zinc-500 underline underline-offset-4">
+                <i class="fa-brands fa-python pr-1"></i>
+                FastAPI
+            </a>
+        </p>
+        <p>
+            <a href="#" class="hover:text-zinc-500 underline underline-offset-4">
+                <i class="fa-brands fa-python pr-1"></i>
+                Jinja2
+            </a>
+        </p>
+        <p>
+            <a href="#" class="hover:text-zinc-500 underline underline-offset-4">
+                <i class="fa-brands fa-css3 pr-1"></i>
+                TailwindCSS
+            </a>
+        </p>
+        <p>
+            <a href="#" class="hover:text-zinc-500 underline underline-offset-4">
+                <i class="fa-brands fa-font-awesome pr-1"></i>
+                FontAwesome
+            </a>
+        </p>
+    </div>
+
+</section>
+{% endblock %}
