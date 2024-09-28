@@ -1,0 +1,31 @@
+{% macro card(link="", name="", bg="black", colour="white",
+logo="zinc", text="") %}
+
+
+<a href="{{ link }}"
+   class="relative block rounded-md p-4 shadow-md  sm:p-6 lg:p-8
+          transition ease-in-out duration-500 hover:shadow-inner
+          hover:text-{{colour}}-500 border border-zinc-300
+          hover:border-{{colour}}-600">
+
+    <div class="flex items-center gap-4 mb-4">
+        <h3 class="text-2xl font-bold sm:text-4xl">
+            {{ name }}
+        </h3>
+    </div>
+
+    <div class="flex flex-row text-2xl bg-{{bg}} rounded text-white border-2 border-black">
+        <p class="py-1 px-3 bg-{{bg}}-500 w-12 text-white ">
+            <i class="fa fa-brands fa-{{logo}}"></i>
+        </p>
+
+        <p class="py-1 px-2 bg-{{colour}}-500 w-24">
+
+        </p>
+        <p class="py-1 px-2 uppercase font-semibold tracking-widest rounded-r grow">
+            {{ name }}
+        </p>
+    </div>
+
+</a>
+{% endmacro %}

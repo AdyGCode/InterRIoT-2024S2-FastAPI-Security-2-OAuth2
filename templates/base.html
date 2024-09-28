@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} DEFAULT TITLE {% endblock %}</title>
+    <title>{% block title %}DEFAULT TITLE{% endblock %} | XXX | InterRIoT</title>
 
     <!-- TailwindCSS include -->
     <link href="{{ url_for('static', path='css/site.css') }}" rel="stylesheet">
-   <!-- FontAwesome include -->
+    <!-- FontAwesome include -->
     <link href="{{ url_for('static', path='css/all.css') }}" rel="stylesheet">
 
 </head>
@@ -17,12 +17,18 @@
     {% include "components/header.html" %}
 
 
-    <main class="container grow h-full mx-auto p-8 flex flex-col space-y-6">
-        {% block page_title %}{% endblock %}
+    <main class="container grow h-full mx-auto py-8">
+        <div class="container bg-white p-8 flex flex-col space-y-6  rounded rounded-lg">
+            {% block page_title %}{% endblock %}
 
-        {% block main%}
-        ... nothing to see here
-        {% endblock%}
+            {% block page_content %}
+            ... nothing to see here
+            {% endblock %}
+
+            <section class="text-sm text-zinc-400 mx-auto my-4 flex flex-col space-y-6 mx-12">
+                {% block page_footer %}{% endblock %}
+            </section>
+        </div>
     </main>
 
     {% include "components/footer.html" %}
