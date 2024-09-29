@@ -675,6 +675,21 @@ video {
   margin-right: 3rem;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mx-16 {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.-my-6 {
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+}
+
 .-mt-2 {
   margin-top: -0.5rem;
 }
@@ -713,6 +728,10 @@ video {
 
 .-mt-8 {
   margin-top: -2rem;
+}
+
+.mr-8 {
+  margin-right: 2rem;
 }
 
 .block {
@@ -815,6 +834,14 @@ video {
   list-style-type: disc;
 }
 
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -865,6 +892,14 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2264,6 +2299,10 @@ video {
   text-transform: capitalize;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .leading-3 {
   line-height: .75rem;
 }
@@ -3394,6 +3433,10 @@ video {
   text-underline-offset: 4px;
 }
 
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -3427,6 +3470,10 @@ video {
   transition-duration: 500ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -3443,6 +3490,16 @@ video {
 .hover\:bg-zinc-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-zinc-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(228 228 231 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-zinc-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(82 82 91 / var(--tw-bg-opacity));
 }
 
 .hover\:text-red-500:hover {
@@ -3463,6 +3520,16 @@ video {
 .hover\:text-zinc-600:hover {
   --tw-text-opacity: 1;
   color: rgb(82 82 91 / var(--tw-text-opacity));
+}
+
+.hover\:text-blue-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+
+.hover\:text-zinc-100:hover {
+  --tw-text-opacity: 1;
+  color: rgb(244 244 245 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-none:hover {
