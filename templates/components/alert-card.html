@@ -1,0 +1,31 @@
+{% macro alert_card(status={'url':"home", 'name':"OOPS", 'bg':"gray", 'colour':"gray",
+'logo':"puzzle-piece", 'heading':"Whoops!", 'details':""}) %}
+
+
+<section class="my-4">
+
+    <a href="{{ url_for(status.url) }}"
+       class="shadow shadow-md shadow-white hover:shadow-zinc-500
+              transition ease-in-out duration-500 bg-{{status.bg}}-50
+              grid grid-cols-10 items-center gap-0 space-x-0 space-y-0
+              rounded border border-{{status.bg}}-500  ">
+
+        <div class="col-span-2 min-h-16
+                    py-2 px-6 bg-{{status.bg}}-500
+                    text-2xl text-white
+                    flex flex-row items-center ">
+            <p class="border border-white border-2 rounded-full w-12 h-12 content-center text-center">
+                <i class="fa fa-solid fa-{{status.logo}}"></i>
+            </p>
+            <p class="pl-6">{{ status.name }}</p>
+        </div>
+
+        <div class="col-span-8 text-{{status.colour}}-700 px-6 flex flex-col">
+            <p class="tracking-widest text-xl font-semibold">{{ status.heading }}</p>
+            <p class="font-light text-{{status.colour}}-500 ">{{ status.details }}</p>
+        </div>
+    </a>
+
+</section>
+
+{% endmacro %}
