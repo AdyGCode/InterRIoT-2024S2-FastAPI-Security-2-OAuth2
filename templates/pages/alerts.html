@@ -2,27 +2,34 @@
 
 {% import "components/alert-card.html" as alert_card with context %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Alert Samples{% endblock title %}
 
 {% block page_title %}
 <h2 class="mx-4 text-3xl text-zinc-700 text-left font-medium uppercase title-font">
     <i class="fa-solid fa-home text-zinc-500"></i>
-    Home Page
+    Alert Samples
 </h2>
 {% endblock %}
 
 {% block page_content %}
 <section class="container mx-auto border grow h-full shadow-md p-4 pb-8 rounded space-y-2">
     <h2 class="text-xl text-zinc-50 bg-zinc-600 p-4 pb-6 mb-6 -mx-4 -mt-4 rounded-t">
-        Section Heading
+        Alert! Alert!
     </h2>
 
-    <p>MAIN CONTENT</p>
+    <p>
+        The following are examples of the types of alerts you could create using he "alert-card" template macro.
+    </p>
+    <p>
+        To see how it is used, check the <code class="bg-sky-200 text-sky-700 py-1 px-2">app.py</code> file and the
+        <code class="bg-sky-200 text-sky-700 py-1 px-2">home</code> and
+        <code class="bg-sky-200 text-sky-700 py-1 px-2">alerts</code> methods/routes.
+    </p>
 
     <section>
         {% for status in statuses %}
 
-        {{ alert_card.alert_card(status=status ) }}
+        {{ alert_card.alert_card( status=status ) }}
 
         {% endfor %}
     </section>

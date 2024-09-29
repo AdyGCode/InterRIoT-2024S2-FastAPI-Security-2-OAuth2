@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% import "components/card.html" as card with context %}
+{% import "components/provider-card.html" as provider_card with context %}
 
 {% block title %} Authentication via OAuth2 {% endblock %}
 
@@ -18,11 +18,11 @@
 
 
 {% block page_content %}
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 lg:mb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-6 lg:mb-8">
 
 
     {% for provider in providers %}
-    {{ card.card(link=provider.url, name=provider.name,
+    {{ provider_card.provider_card(link=provider.url, name=provider.name,
                  bg=provider.bg, colour=provider.colour,
                  logo=provider.logo, text=provider.text
                 ) }}

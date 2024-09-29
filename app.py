@@ -30,13 +30,6 @@ LOGGED_IN = "Logged in"
 print(BASE_PATH)
 
 
-@app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return TEMPLATES.TemplateResponse(
-        request=request, name="pages/home.html"
-    )
-
-
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
     return TEMPLATES.TemplateResponse(
@@ -44,7 +37,22 @@ async def about(request: Request):
     )
 
 
-@app.route('/providers')
+@app.get('/colours')
+def colours(request: Request):
+    return TEMPLATES.TemplateResponse(request=request, name="pages/colours.html")
+
+
+@app.get('/privacy')
+def privacy(request: Request):
+    return TEMPLATES.TemplateResponse(request=request, name="pages/privacy.html")
+
+
+@app.get('/terms')
+def terms(request: Request):
+    return TEMPLATES.TemplateResponse(request=request, name="pages/terms.html")
+
+
+@app.get('/providers')
 def providers(request: Request):
     # profile = session.get('profile')
     profile = {'name': 'ady'}
@@ -92,14 +100,117 @@ def providers(request: Request):
     )
 
 
-@app.route('/colours')
-def colours(request: Request):
-    return TEMPLATES.TemplateResponse(request=request, name="pages/colours.html")
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    statuses = []
 
-@app.route('/privacy')
-def privacy(request: Request):
-    return TEMPLATES.TemplateResponse(request=request, name="pages/privacy.html")
+    return TEMPLATES.TemplateResponse(
+        request=request,
+        name="pages/home.html",
+        context={
+            'user': [],
+            'statuses': statuses
+        }
+    )
 
-@app.route('/terms')
-def terms(request: Request):
-    return TEMPLATES.TemplateResponse(request=request, name="pages/terms.html")
+@app.get("/alerts", response_class=HTMLResponse)
+async def alerts(request: Request):
+    statuses = [
+        {
+            'name': 'DANGER', 'colour': 'zinc', 'bg': 'red',
+            'logo': 'skull-crossbones', 'url': 'home',
+            'heading': "Alert Type: Danger",
+            'details': "It's dead Jim! Yep, we've had a major error!",
+        },
+        {
+            'name': 'WARNING', 'colour': 'zinc', 'bg': 'amber',
+            'logo': 'exclamation', 'url': 'home',
+            'heading': "Alert Type: Warning",
+            'details': "When something isn't quite broken, it's a warning.",
+        },
+        {
+            'name': 'SUCCESS', 'colour': 'zinc', 'bg': 'green',
+            'logo': 'check', 'url': 'home',
+            'heading': "Alert Type: Success",
+            'details': "The task completed successfully.",
+        },
+        {
+            'name': 'QUESTION', 'colour': 'zinc', 'bg': 'teal',
+            'logo': 'question', 'url': 'home',
+            'heading': "Alert Type: Question",
+            'details': "Want the user to answer a question, you may use this alert.",
+        },
+        {
+            'name': 'INFO', 'colour': 'zinc', 'bg': 'sky',
+            'logo': 'info', 'url': 'home',
+            'heading': "Alert Type: Information",
+            'details': "When you just want to tell the user something that is not an alert.",
+        },
+        {
+            'name': 'PRIMARY', 'colour': 'zinc', 'bg': 'blue',
+            'logo': 'thumbs-up', 'url': 'home',
+            'heading': "Alert Type: Primary",
+            'details': "A general primary alert message with details.",
+        },
+        {
+            'name': 'DIRECTIVE', 'colour': 'zinc', 'bg': 'indigo',
+            'logo': 'traffic-light', 'url': 'home',
+            'heading': "Alert Type: Directive",
+            'details': "When you need the user to do something, you could use this alert.",
+        },
+        {
+            'name': 'SECONDARY', 'colour': 'zinc', 'bg': 'zinc',
+            'logo': 'pencil', 'url': 'home',
+            'heading': "Alert Type: Secondary",
+            'details': "This is a general secondary alert and details.",
+        },
+    ]
+
+    return TEMPLATES.TemplateResponse(
+        request=request,
+        name="pages/alerts.html",
+        context={
+            'user': [],
+            'statuses': statuses
+        }
+    )
+
+
+@app.get("/login/google")
+async def login_google(request: Request):
+    GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
+    GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    GOOGLE_CONF_URL = os.environ.get("GOOGLE_CONFIG_URL")
+    GOOGLE_REDIRECT_URI = os.environ.get('GOOGLE_REDIRECT_URI')
+    return {
+        "url": f"https://accounts.google.com/o/oauth2/auth?"
+               f"response_type=code&client_id={GOOGLE_CLIENT_ID}&"
+               f"redirect_uri={GOOGLE_REDIRECT_URI}&"
+               f"scope=openid%20profile%20email&access_type=offline"
+    }
+
+@app.get("/auth/google")
+async def auth_google(code: str):
+    token_url = "https://accounts.google.com/o/oauth2/token"
+    GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
+    GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    GOOGLE_CONF_URL = os.environ.get("GOOGLE_CONFIG_URL")
+    GOOGLE_REDIRECT_URI = os.environ.get('GOOGLE_REDIRECT_URI')
+
+    data = {
+        "code": code,
+        "client_id": GOOGLE_CLIENT_ID,
+        "client_secret": GOOGLE_CLIENT_SECRET,
+        "redirect_uri": GOOGLE_REDIRECT_URI,
+        "grant_type": "authorization_code",
+    }
+    response = requests.post(token_url, data=data)
+    access_token = response.json().get("access_token")
+    user_info = requests.get("https://www.googleapis.com/oauth2/v1/userinfo",
+                             headers={"Authorization": f"Bearer {access_token}"})
+    return user_info.json()
+
+@app.get("/token")
+async def get_token(token: str = Depends(oauth2_scheme)):
+    GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    return jwt.decode(token, GOOGLE_CLIENT_SECRET, algorithms=["HS256"])

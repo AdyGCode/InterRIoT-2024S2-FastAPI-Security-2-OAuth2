@@ -1,0 +1,23 @@
+{% macro provider_card(link="", name="", bg="black", colour="white",
+logo="zinc", text="") %}
+
+<a href="{{ link }}"
+   class="relative block rounded-md p-4 sm:p-6 lg:p-8
+          transition ease-in-out duration-500
+          group
+          shadow-md shadow-zinc-400 hover:shadow-none
+          bg-black hover:bg-{{colour}}-500
+          text-{{colour}}-500 hover:text-white
+          flex flex-col items-center gap-4">
+    <h3 class=" -mt-4 md:-mt-6 lg:-mt-8 p-4
+               text-center font-semibold text-md sm:text-lg md:text-xl lg:text-2xl">
+        {{ name }}
+    </h3>
+
+    <p class="text-center m-0 p-0 -mt-4">
+        <i
+                class="fa fa-brands fa-{{logo}} text-2xl md:text-4xl lg:text-8xl"></i>
+    </p>
+
+</a>
+{% endmacro %}
