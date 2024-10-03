@@ -19,6 +19,7 @@ load_dotenv(".env")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/css", StaticFiles(directory="static/css"), name="css")
 app.mount("/js", StaticFiles(directory="static/js"), name="js")
+app.mount("/img", StaticFiles(directory="static/img"), name="img")
 
 app.secret_key = os.environ.get("APP_SECRET")
 

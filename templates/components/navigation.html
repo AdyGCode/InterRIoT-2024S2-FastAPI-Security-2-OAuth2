@@ -2,14 +2,11 @@
 <nav class="border border-zinc-300 py-2.5 bg-zinc-200 shadow-md shadow-zinc-900/50">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ url_for('home') }}" class="flex items-center">
-            <h1 class="self-center text-xl font-semibold whitespace-nowrap flex flex-row-reverse">
-                <span class="pl-2">
+            <h1 class="self-center text-xl font-semibold whitespace-nowrap flex flex-row-reverse content-center">
+                <span class="pl-2 ">
                     FastAPI
                 </span>
-                <span>
-                    <i class="fa-brands fa-python text-zinc-500"></i>
-                    <i class="fa-solid fa-truck-fast text-zinc-500"></i>
-                </span>
+                    <img src="{{ url_for('img', path='FastAPI-Standard.png') }}" class="max-w-6 max-h-6" />
             </h1>
         </a>
 
